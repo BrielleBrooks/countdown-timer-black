@@ -21,17 +21,29 @@ html, body {
   height: 100%;
   width: 100%;
   font-family: 'Inter', sans-serif;
-  background-color: transparent;
+
+  /* ✅ Force the iframe background to be truly transparent */
+  background: transparent !important;
+
   color: white;
   overflow: hidden;
 }
+
 
 /* === WIDGET CONTAINER === */
 #widget-container {
   width: 100%;
   height: 100%;
   padding: 24px 16px;
+
   border-radius: 10px;
+
+  /* ✅ IMPORTANT: clip everything inside the rounded corners */
+  overflow: hidden;
+
+  /* ✅ IMPORTANT: forces proper corner clipping in iframes */
+  isolation: isolate;
+
   background-color: #262626;
   text-align: center;
   display: flex;
@@ -39,6 +51,7 @@ html, body {
   justify-content: flex-start;
   align-items: center;
 }
+
 
 /* === TOP BAR === */
 .top-bar {
@@ -177,6 +190,8 @@ button img {
   justify-content: center;
   align-items: center;
   z-index: 100;
+  
+  border-radius: 10px; /* ✅ helps match the widget corners when embedded */
 }
 
 .modal-content {
